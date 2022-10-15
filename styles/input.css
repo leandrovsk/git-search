@@ -1,0 +1,14 @@
+.aside-right input{
+   height: 2rem;
+   width: 100%;
+   padding: 0.625rem;
+   outline: none;
+   border: none;
+   border-radius: var(--radius-1);
+   background-color: var(--color-grey-1);
+   color: rgba(255, 255, 255, 0.5);
+}
+
+.aside-right input::placeholder{
+   font-size: var(--font-text-2);
+}

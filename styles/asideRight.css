@@ -1,0 +1,33 @@
+.aside-right {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 48%;
+   height: 100%;
+   background-color: var(--color-grey-2);
+   color: var(--color-grey-7);
+}
+
+.aside-right h2 {
+   font-size: var(--font-title-2);
+   font-weight: 500;
+}
+
+.aside-right label{
+   font-size: var(--font-text-2);
+   font-weight: 500;
+}
+
+.aside-right-container {
+   width: 45%;
+   display: flex;
+   flex-direction: column;
+   gap: 2.81rem;
+}
+
+.aside-right-container span{
+   display: flex;
+   flex-direction: column;
+   gap: 1.25rem;
+}

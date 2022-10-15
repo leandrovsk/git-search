@@ -1,10 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: inherit;
+  list-style: none;
+  text-decoration: none;
+}
+
+.container {
+  width: 860px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 :root{
+
+    --font-title-1: 2rem;
+    --font-title-2: 1.25rem;
+    --font-title-3: 1.5rem;
+    --font-text-1: 1rem;
+    --font-text-2: 0.875rem;
+    --radius-1: 0.25rem;
+    --radius-2: 0.5rem;
+
+
     --color-brand-1: #C2255C;
     --color-brand-2: #D6336C;
     --color-grey-1:  #191C1F;

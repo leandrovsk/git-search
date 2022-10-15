@@ -1,0 +1,17 @@
+.user-search-btn {
+   padding: 10px 0px;
+   color: var(--color-grey-7);
+   border-radius: var(--radius-1);
+   background-color: var(--color-brand-2);
+   font-weight: 500;
+   font-size: var(--font-text-2);
+   outline: none;
+   border: none;
+   cursor: pointer;
+}
+
+.faded {
+   color: rgba(255, 255, 255, 0.35);
+   background-color: rgba(214, 51, 108, 0.4);
+   cursor: default;
+}

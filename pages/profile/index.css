@@ -1,1 +1,127 @@
-/* Desenvolva sua estilização aqui...*/
+body {
+  background-color: var(--color-grey-2);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-grey-7);
+  padding: 60px 30px 0px 30px;
+  flex-wrap: wrap;
+}
+
+header h2 {
+  font-size: var(--font-title-3);
+}
+
+.profile-desc-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-img {
+  width: 80px;
+  border-radius: 50%;
+  border: 0.15rem solid var(--color-brand-2);
+}
+
+.container-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.container-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-email-btn {
+  padding: 0px 24px;
+  height: 32px;
+  border-radius: var(--radius-2);
+  border: none;
+  background-color: var(--color-brand-2);
+  color: var(--color-grey-7);
+  font-size: var(--font-text-2);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.change-user-btn {
+  padding: 0px 24px;
+  height: 32px;
+  border-radius: var(--radius-2);
+  border: none;
+  background-color: var(--color-grey-3);
+  color: var(--color-grey-7);
+  font-size: var(--font-text-2);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.repos-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 60px 0px;
+  flex-wrap: wrap;
+  padding: 0px 30px;
+}
+
+.repo {
+  padding: 41px 27px;
+  width: 380px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-2);
+  color: var(--color-grey-7);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: ease 0.3s;
+}
+
+.repo:hover {
+   border: 2px solid var(--color-grey-7);
+   background-color: var(--color-grey-1);
+}
+
+.repo:hover .repo-btn {
+   background-color: var(--color-brand-2);
+   border: 1px solid transparent;
+}
+
+.repo span {
+  display: flex;
+  gap: 15px;
+}
+
+.repo button {
+  border-radius: var(--radius-1);
+  padding: 0px 8px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.repo-btn {
+   color: var(--color-grey-7);
+   background-color: transparent;
+   border: 1px solid var(--color-grey-7);
+   transition: ease 0.3s;
+}
+
+.demo-btn {
+  color: var(--color-grey-7);
+  background-color: transparent;
+  border: 1px solid var(--color-grey-7);
+}
+
+.user-job {
+  max-width: 310px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
