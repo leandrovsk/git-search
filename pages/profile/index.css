@@ -49,6 +49,11 @@ header h2 {
   font-size: var(--font-text-2);
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.user-email-btn:hover { 
+  background-color: var(--color-brand-1);
 }
 
 .change-user-btn {
@@ -61,6 +66,11 @@ header h2 {
   font-size: var(--font-text-2);
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.change-user-btn:hover {
+  background-color: var(--color-grey-1);
 }
 
 .repos-list {
@@ -89,10 +99,6 @@ header h2 {
    background-color: var(--color-grey-1);
 }
 
-.repo:hover .repo-btn {
-   background-color: var(--color-brand-2);
-   border: 1px solid transparent;
-}
 
 .repo span {
   display: flex;
@@ -113,15 +119,42 @@ header h2 {
    transition: ease 0.3s;
 }
 
+.repo-title {
+  font-weight: 500;
+  font-size: var(--font-title-2);
+}
+
+.repo-desc {
+  font-size: var(--font-text-2);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.repo-btn:hover {
+  background-color: var(--color-brand-2);
+  border: 1px solid var(--color-brand-2);
+}
+
 .demo-btn {
   color: var(--color-grey-7);
   background-color: transparent;
   border: 1px solid var(--color-grey-7);
+  transition: ease 0.3s;
 }
 
-.user-job {
-  max-width: 310px;
+.demo-btn:hover {
+  background-color: var(--color-brand-2);
+  border: 1px solid var(--color-brand-2);
+}
+
+.user-bio {
+  max-width: 330px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.disable {
+  pointer-events: none;
+  opacity: 50%;
 }

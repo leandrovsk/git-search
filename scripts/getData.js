@@ -1,6 +1,4 @@
-!localStorage.getItem("gitUsers")
-  ? localStorage.setItem("gitUsers", JSON.stringify([]))
-  : null;
+!localStorage.getItem("gitUsers") ? localStorage.setItem("gitUsers", JSON.stringify([])) : null;
 
 async function getUserData(username) {
   try {

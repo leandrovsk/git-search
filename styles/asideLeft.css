@@ -46,11 +46,40 @@
 .user-img {
    border-radius: 50%;
    width: 44px;
-   border: 2px solid var(--color-brand-1);
+   border: 0.15rem solid var(--color-brand-1);
+   position: relative;
+   z-index: 0; 
    transition: 0.3s ease;
+}
+
+.recent-users-container {
+   display: flex;
+   flex-direction: column;
+   position: relative;
    cursor: pointer;
 }
 
-.user-img:hover {
-   border: 2px solid var(--color-grey-7);
+.recent-users-container p {
+   display: none;
+   position: absolute;
+   padding: 4px 8px;
+   background-color: var(--color-grey-7);
+   border-radius: var(--radius-1);
+   bottom: -12px;
+   left: -38px;
+   font-size: var(--font-text-3);
+   font-weight: 500;
+   min-width: 124px;
+   width: fit-content;
+   z-index: 1;
+   border: none;
+   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+   color: var(--color-grey-2);
+}
+
+.recent-users-container:hover .user-img {
+   border: 0.15rem solid var(--color-grey-7);
+}
+.recent-users-container:hover > p {
+   display: block;
 }

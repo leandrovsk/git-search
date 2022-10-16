@@ -26,8 +26,9 @@ function asideRight() {
          <h2>Procurar por um usuário</h2>
          <span>
             <label for="user-search-input">Usuário github</label>
-            <input type="text" id='user-seach-input' placeholder='Digite um usuário do github aqui...'>
-            <button class='user-search-btn'>Ver perfil do github</button>
+            <input type="text" id='user-search-input' placeholder='Digite um usuário do github aqui...'>
+            <p class='user-search-alert'>Usuário não encontrado</p>
+            <button class='user-search-btn faded'>Ver perfil do github</button>
          </span>
       </span>
    </aside>`
@@ -37,8 +38,8 @@ function asideRight() {
 asideRight();
 
 async function renderLastUser(login) {
-   await getUserData(login);
-   window.location.replace("/pages/profile/index.html");
+  await getUserData(login);
+  window.location.replace("/pages/profile/index.html");
 }
 
 function lastUsers() {
@@ -47,32 +48,66 @@ function lastUsers() {
   const localUsers = JSON.parse(localStorage.getItem("gitUsers"));
 
   localUsers.forEach((user) => {
-   recentUsers.insertAdjacentHTML('afterbegin', `
-      <figure>
-         <img src='${user.avatar_url}' class='user-img' onClick={renderLastUser('${
-         user.login}')}>
-      </figure>
-   `)
-  })
+    recentUsers.insertAdjacentHTML(
+      "afterbegin",
+      `
+      <li class='recent-users-container' onClick=renderLastUser('${user.login}')>
+         <figure>
+         <img src='${user.avatar_url}' class='user-img'>
+         </figure>
+         <p>Acessar este perfil</p>
+      </li>
+   `
+    );
+  });
 }
 
-lastUsers()
+lastUsers();
 
 function events() {
   let searchBtn = document.querySelector(".user-search-btn");
+  let searchAlert = document.querySelector(".user-search-alert");
+  let searchInput = document.querySelector("#user-search-input");
 
-  if (!searchBtn.classList.contains("faded"))
-    searchBtn.addEventListener("click", async (event) => {
-      let userName = event.target.previousElementSibling.value;
+  searchBtn.addEventListener("click", async (event) => {
+    if (!searchBtn.classList.contains("faded")) {
+      let userName = searchInput.value;
       let response = (await fetch(`https://api.github.com/users/${userName}`))
         .status;
       if (response === 200) {
         await getUserData(userName);
         window.location.replace("/pages/profile/index.html");
       } else {
-        alert("Wrong username");
+        searchAlert.classList.add("alert");
+        searchInput.value = "";
+        searchBtn.classList.add("faded");
       }
-    });
+    }
+  });
+
+  searchInput.addEventListener("keyup", async (event) => {
+    if (searchInput.value === "") {
+      searchBtn.classList.add("faded");
+    } else {
+      searchBtn.classList.remove("faded");
+      searchAlert.classList.remove("alert");
+    }
+    if(event.key === 'Enter') {
+      if (!searchBtn.classList.contains("faded")) {
+         let userName = searchInput.value;
+         let response = (await fetch(`https://api.github.com/users/${userName}`))
+           .status;
+         if (response === 200) {
+           await getUserData(userName);
+           window.location.replace("/pages/profile/index.html");
+         } else {
+           searchAlert.classList.add("alert");
+           searchInput.value = "";
+           searchBtn.classList.add("faded");
+         }
+       }
+    }
+  });
 }
 
 events();

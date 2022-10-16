@@ -1,8 +1,21 @@
-let newUserData = JSON.parse(localStorage.getItem('newUserData'))
-let newUserRepos = JSON.parse(localStorage.getItem('newUserRepos'))
+let newUserData = JSON.parse(localStorage.getItem("newUserData"));
+let newUserRepos = JSON.parse(localStorage.getItem("newUserRepos"));
 
 let name = newUserData.name ? newUserData.name : newUserData.login;
-let bio = newUserData.bio ? newUserData.bio : "Full Stack Developer";
+let bio = newUserData.bio
+  ? newUserData.bio
+  : "This user does not have a bio description";
+
+let descExample =
+  "Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like";
+
+let email = newUserData.email;
+
+let emailClass = "";
+
+if (email === null) {
+  emailClass = "disable";
+}
 
 let title = document.querySelector("title");
 title.innerText = name;
@@ -16,20 +29,20 @@ function header() {
   main.insertAdjacentHTML(
     "beforeend",
     ` <header> 
-               <span class='container-left'>
-                  <figure>
-                     <img src='${newUserData.avatar_url}' class='user-img'>
-                  </figure>
-                  <span class='profile-desc-container'>
-                     <h2 class='user-name'>${name}</h2>
-                     <p class='user-job'>${bio}</p>
-                  </span>
-               </span>
-               <span class='container-right'>
-                  <button class='user-email-btn'>Email</button>
-                  <button class='change-user-btn' onClick={window.location.replace("/index.html")}>Trocar de usuário</button>
-               </span>
-            </header>`
+         <span class='container-left'>
+            <figure>
+               <img src='${newUserData.avatar_url}' class='user-img'>
+            </figure>
+            <span class='profile-desc-container'>
+               <h2 class='user-name'>${name}</h2>
+               <p class='user-bio'>${bio}</p>
+            </span>
+         </span>
+         <span class='container-right'>
+            <a href='mailto:${email}' class='${emailClass}'><button class='user-email-btn'>Email</button></a>
+            <button class='change-user-btn' onClick={window.location.replace("/index.html")}>Trocar de usuário</button>
+         </span>
+      </header>`
   );
 }
 
@@ -39,22 +52,29 @@ function repos() {
   let ul = document.querySelector(".repos-list");
 
   newUserRepos.forEach((repo) => {
+
+   let desc = repo.desc ? repo.desc : descExample;
+
+    let demoClass = "";
+
+    if (!repo.has_pages) {
+      demoClass = "disable";
+    } 
+
     ul.insertAdjacentHTML(
       "beforeend",
-      `
-               <li class='repo'>
-                  <h2 class='repo-title'>${repo.name}</h2>
-                  <p class='repo-desc'>   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, suscipit obcaecati. Laudantium sed ex animi voluptatum blanditiis iusto corrupti, tenetur distinctio, unde suscipit vel neque voluptates officiis est repellat. Sunt!</p>
-                 <span>
-                     <a href='${repo.html_url}' target=_blank>
-                        <button class='repo-btn'>Repositório</button>
-                     </a>
-                     <a href='https://${newUserData.login}.github.io/${repo.name}' target=_blank>
-                        <button class='demo-btn'>Demo</button>
-                     </a>
-                 </span>
-               </li>
-            `
+      `<li class='repo'>
+         <h2 class='repo-title'>${repo.name}</h2>
+         <p class='repo-desc'>${desc}</p>
+         <span>
+            <a href='${repo.html_url}' target=_blank>
+               <button class='repo-btn' id='repo-btn'>Repositório</button>
+            </a>
+            <a href='https://${newUserData.login}.github.io/${repo.name}' target=_blank class='${demoClass}'>
+               <button class='demo-btn'>Demo</button>
+            </a>
+         </span>
+      </li>`
     );
   });
 }

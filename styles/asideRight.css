@@ -31,3 +31,14 @@
    flex-direction: column;
    gap: 1.25rem;
 }
+
+.user-search-alert {
+   font-size: var(--font-text-2);
+   color: var(--color-brand-1);
+   font-weight: 400;
+   display: none;
+}
+
+.alert {
+   display: block;
+}
