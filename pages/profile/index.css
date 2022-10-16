@@ -39,40 +39,6 @@ header h2 {
   gap: 15px;
 }
 
-.user-email-btn {
-  padding: 0px 24px;
-  height: 32px;
-  border-radius: var(--radius-2);
-  border: none;
-  background-color: var(--color-brand-2);
-  color: var(--color-grey-7);
-  font-size: var(--font-text-2);
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.user-email-btn:hover { 
-  background-color: var(--color-brand-1);
-}
-
-.change-user-btn {
-  padding: 0px 24px;
-  height: 32px;
-  border-radius: var(--radius-2);
-  border: none;
-  background-color: var(--color-grey-3);
-  color: var(--color-grey-7);
-  font-size: var(--font-text-2);
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.change-user-btn:hover {
-  background-color: var(--color-grey-1);
-}
-
 .repos-list {
   display: flex;
   justify-content: space-between;
@@ -99,24 +65,9 @@ header h2 {
    background-color: var(--color-grey-1);
 }
 
-
 .repo span {
   display: flex;
   gap: 15px;
-}
-
-.repo button {
-  border-radius: var(--radius-1);
-  padding: 0px 8px;
-  height: 28px;
-  cursor: pointer;
-}
-
-.repo-btn {
-   color: var(--color-grey-7);
-   background-color: transparent;
-   border: 1px solid var(--color-grey-7);
-   transition: ease 0.3s;
 }
 
 .repo-title {
@@ -130,31 +81,9 @@ header h2 {
   font-weight: 400;
 }
 
-.repo-btn:hover {
-  background-color: var(--color-brand-2);
-  border: 1px solid var(--color-brand-2);
-}
-
-.demo-btn {
-  color: var(--color-grey-7);
-  background-color: transparent;
-  border: 1px solid var(--color-grey-7);
-  transition: ease 0.3s;
-}
-
-.demo-btn:hover {
-  background-color: var(--color-brand-2);
-  border: 1px solid var(--color-brand-2);
-}
-
 .user-bio {
   max-width: 330px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.disable {
-  pointer-events: none;
-  opacity: 50%;
 }
