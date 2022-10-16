@@ -38,6 +38,7 @@ function asideRight() {
 asideRight();
 
 async function renderLastUser(login) {
+  addSpinner()
   await getUserData(login);
   window.location.replace("/pages/profile/index.html");
 }
@@ -64,24 +65,42 @@ function lastUsers() {
 
 lastUsers();
 
+let searchBtn = document.querySelector(".user-search-btn");
+let searchAlert = document.querySelector(".user-search-alert");
+let searchInput = document.querySelector("#user-search-input");
+
+function addSpinner() {
+  let img = document.createElement("img");
+  img.classList.add("loading");
+  img.src = "/src/img/spinner.svg";
+  img.alt = "Spinner";
+
+  searchBtn.innerHTML = "";
+  searchBtn.appendChild(img);
+  searchBtn.classList.add("faded");
+}
+
 function events() {
-  let searchBtn = document.querySelector(".user-search-btn");
-  let searchAlert = document.querySelector(".user-search-alert");
-  let searchInput = document.querySelector("#user-search-input");
+  async function checkResponse() {
+    let userName = searchInput.value;
+    let response = (await fetch(`https://api.github.com/users/${userName}`))
+      .status;
+    if (response === 200) {
+      await getUserData(userName);
+      window.location.replace("/pages/profile/index.html");
+    } else {
+      searchAlert.classList.add("alert");
+      searchInput.value = "";
+      searchBtn.classList.add("faded");
+      searchBtn.innerHTML = ''
+      searchBtn.innerText = 'Ver perfil do github'
+    }
+  }
 
   searchBtn.addEventListener("click", async (event) => {
     if (!searchBtn.classList.contains("faded")) {
-      let userName = searchInput.value;
-      let response = (await fetch(`https://api.github.com/users/${userName}`))
-        .status;
-      if (response === 200) {
-        await getUserData(userName);
-        window.location.replace("/pages/profile/index.html");
-      } else {
-        searchAlert.classList.add("alert");
-        searchInput.value = "";
-        searchBtn.classList.add("faded");
-      }
+      addSpinner();
+      checkResponse();
     }
   });
 
@@ -92,20 +111,11 @@ function events() {
       searchBtn.classList.remove("faded");
       searchAlert.classList.remove("alert");
     }
-    if(event.key === 'Enter') {
+    if (event.key === "Enter") {
       if (!searchBtn.classList.contains("faded")) {
-         let userName = searchInput.value;
-         let response = (await fetch(`https://api.github.com/users/${userName}`))
-           .status;
-         if (response === 200) {
-           await getUserData(userName);
-           window.location.replace("/pages/profile/index.html");
-         } else {
-           searchAlert.classList.add("alert");
-           searchInput.value = "";
-           searchBtn.classList.add("faded");
-         }
-       }
+        addSpinner();
+        checkResponse();
+      }
     }
   });
 }
