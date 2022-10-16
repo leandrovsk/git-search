@@ -37,12 +37,6 @@ function asideRight() {
 
 asideRight();
 
-async function renderLastUser(login) {
-  addSpinner()
-  await getUserData(login);
-  window.location.replace("/pages/profile/index.html");
-}
-
 function lastUsers() {
   let recentUsers = document.querySelector(".recent-users");
 
@@ -65,9 +59,15 @@ function lastUsers() {
 
 lastUsers();
 
-let searchBtn = document.querySelector(".user-search-btn");
-let searchAlert = document.querySelector(".user-search-alert");
-let searchInput = document.querySelector("#user-search-input");
+async function renderLastUser(login) {
+  addSpinner()
+  await getUserData(login);
+  window.location.replace("/pages/profile/index.html");
+}
+
+const searchBtn = document.querySelector(".user-search-btn");
+const searchAlert = document.querySelector(".user-search-alert");
+const searchInput = document.querySelector("#user-search-input");
 
 function addSpinner() {
   let img = document.createElement("img");

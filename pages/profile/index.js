@@ -1,24 +1,24 @@
 let newUserData = JSON.parse(localStorage.getItem("newUserData"));
 let newUserRepos = JSON.parse(localStorage.getItem("newUserRepos"));
 
-let name = newUserData.name ? newUserData.name : newUserData.login;
-let bio = newUserData.bio
+let userName = newUserData.name ? newUserData.name : newUserData.login;
+let userBio = newUserData.bio
   ? newUserData.bio
   : "This user does not have a bio description";
 
 let descExample =
   "Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like";
 
-let email = newUserData.email;
+let userEmail = newUserData.email;
 
 let emailClass = "";
 
-if (email === null) {
+if (userEmail === null) {
   emailClass = "disable";
 }
 
 let title = document.querySelector("title");
-title.innerText = name;
+title.innerText = userName;
 
 let favIcon = document.querySelector(".favicon");
 favIcon.href = newUserData.avatar_url;
@@ -34,12 +34,12 @@ function header() {
                <img src='${newUserData.avatar_url}' class='user-img'>
             </figure>
             <span class='profile-desc-container'>
-               <h2 class='user-name'>${name}</h2>
-               <p class='user-bio'>${bio}</p>
+               <h2 class='user-name'>${userName}</h2>
+               <p class='user-bio'>${userBio}</p>
             </span>
          </span>
          <span class='container-right'>
-            <a href='mailto:${email}' class='${emailClass}'><button class='user-email-btn'>Email</button></a>
+            <a href='mailto:${userEmail}' class='${emailClass}'><button class='user-email-btn'>Email</button></a>
             <button class='change-user-btn' onClick={window.location.replace("/index.html")}>Trocar de usuário</button>
          </span>
       </header>`
